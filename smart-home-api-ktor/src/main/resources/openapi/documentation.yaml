@@ -1,0 +1,524 @@
+openapi: 3.0.3
+info:
+  title: Smart Home API
+  description: API for managing smart home installations, devices, and customers
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080/api
+    description: Local development server
+paths:
+  /:
+    get:
+      summary: API Status
+      description: Check if the API is running
+      responses:
+        '200':
+          description: API is running
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: Smart Home API is running!
+
+  /customers:
+    get:
+      summary: Get all customers
+      description: Retrieve a list of all customers
+      responses:
+        '200':
+          description: List of customers
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CustomerDTO'
+    post:
+      summary: Create a new customer
+      description: Add a new customer to the system
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerDTO'
+      responses:
+        '201':
+          description: Customer created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerDTO'
+        '400':
+          description: Bad request - invalid input data
+
+  /customers/{id}:
+    get:
+      summary: Get customer by ID
+      description: Retrieve a specific customer by their UUID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Customer details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerDTO'
+        '404':
+          description: Customer not found
+    put:
+      summary: Update customer
+      description: Update an existing customer's information
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerDTO'
+      responses:
+        '200':
+          description: Customer updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerDTO'
+        '404':
+          description: Customer not found
+    delete:
+      summary: Delete customer
+      description: Remove a customer from the system
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '204':
+          description: Customer deleted successfully
+        '404':
+          description: Customer not found
+
+  /customers/by-customer-id/{customerId}:
+    get:
+      summary: Get customer by customer ID
+      description: Retrieve a specific customer by their customer ID
+      parameters:
+        - name: customerId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Customer details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerDTO'
+        '404':
+          description: Customer not found
+
+  /installations:
+    get:
+      summary: Get all installations
+      description: Retrieve a list of all installations
+      responses:
+        '200':
+          description: List of installations
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InstallationDTO'
+    post:
+      summary: Create a new installation
+      description: Add a new installation to the system
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InstallationDTO'
+      responses:
+        '201':
+          description: Installation created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InstallationDTO'
+        '400':
+          description: Bad request - invalid input data
+
+  /installations/{id}:
+    get:
+      summary: Get installation by ID
+      description: Retrieve a specific installation by its UUID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Installation details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InstallationDTO'
+        '404':
+          description: Installation not found
+    put:
+      summary: Update installation
+      description: Update an existing installation's information
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InstallationDTO'
+      responses:
+        '200':
+          description: Installation updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InstallationDTO'
+        '404':
+          description: Installation not found
+    delete:
+      summary: Delete installation
+      description: Remove an installation from the system
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '204':
+          description: Installation deleted successfully
+        '404':
+          description: Installation not found
+
+  /installations/by-customer/{customerId}:
+    get:
+      summary: Get installations by customer ID
+      description: Retrieve all installations for a specific customer
+      parameters:
+        - name: customerId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: List of installations
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InstallationDTO'
+        '404':
+          description: Customer not found or no installations found
+
+  /installations/by-customer-id/{customerIdString}:
+    get:
+      summary: Get installations by customer ID string
+      description: Retrieve all installations for a specific customer by customer ID string
+      parameters:
+        - name: customerIdString
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of installations
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InstallationDTO'
+        '404':
+          description: Customer not found or no installations found
+
+  /devices:
+    get:
+      summary: Get all devices
+      description: Retrieve a list of all devices
+      responses:
+        '200':
+          description: List of devices
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DeviceDTO'
+    post:
+      summary: Create a new device
+      description: Add a new device to the system
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeviceDTO'
+      responses:
+        '201':
+          description: Device created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceDTO'
+        '400':
+          description: Bad request - invalid input data
+
+  /devices/{id}:
+    get:
+      summary: Get device by ID
+      description: Retrieve a specific device by its UUID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Device details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceDTO'
+        '404':
+          description: Device not found
+    put:
+      summary: Update device
+      description: Update an existing device's information
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeviceDTO'
+      responses:
+        '200':
+          description: Device updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceDTO'
+        '404':
+          description: Device not found
+    delete:
+      summary: Delete device
+      description: Remove a device from the system
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '204':
+          description: Device deleted successfully
+        '404':
+          description: Device not found
+
+  /devices/by-installation/{installationId}:
+    get:
+      summary: Get devices by installation ID
+      description: Retrieve all devices for a specific installation
+      parameters:
+        - name: installationId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: List of devices
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DeviceDTO'
+        '404':
+          description: Installation not found or no devices found
+
+components:
+  schemas:
+    CustomerDTO:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          nullable: true
+          description: Unique identifier for the customer
+        customerId:
+          type: string
+          description: Customer's business identifier
+        name:
+          type: string
+          description: Customer's name
+        email:
+          type: string
+          format: email
+          description: Customer's email address
+        phone:
+          type: string
+          description: Customer's phone number
+        createdAt:
+          type: string
+          format: date-time
+          nullable: true
+          description: Creation timestamp
+        updatedAt:
+          type: string
+          format: date-time
+          nullable: true
+          description: Last update timestamp
+      required:
+        - customerId
+        - name
+        - email
+        - phone
+
+    InstallationDTO:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          nullable: true
+          description: Unique identifier for the installation
+        customerId:
+          type: string
+          format: uuid
+          description: ID of the customer who owns this installation
+        address:
+          type: string
+          description: Physical address of the installation
+        gpsLatitude:
+          type: number
+          format: double
+          nullable: true
+          description: GPS latitude coordinate
+        gpsLongitude:
+          type: number
+          format: double
+          nullable: true
+          description: GPS longitude coordinate
+        status:
+          type: string
+          description: Current status of the installation
+        createdAt:
+          type: string
+          format: date-time
+          nullable: true
+          description: Creation timestamp
+        updatedAt:
+          type: string
+          format: date-time
+          nullable: true
+          description: Last update timestamp
+      required:
+        - customerId
+        - address
+        - status
+
+    DeviceDTO:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          nullable: true
+          description: Unique identifier for the device
+        installationId:
+          type: string
+          format: uuid
+          description: ID of the installation where this device is located
+        type:
+          $ref: '#/components/schemas/DeviceTypeDTO'
+        serialNumber:
+          type: string
+          description: Device serial number
+        hwVersion:
+          type: string
+          description: Hardware version
+        swVersion:
+          type: string
+          description: Software version
+        ipAddress:
+          type: string
+          format: ipv4
+          description: IP address of the device
+        createdAt:
+          type: string
+          format: date-time
+          nullable: true
+          description: Creation timestamp
+        updatedAt:
+          type: string
+          format: date-time
+          nullable: true
+          description: Last update timestamp
+      required:
+        - installationId
+        - type
+        - serialNumber
+        - hwVersion
+        - swVersion
+        - ipAddress
+
+    DeviceTypeDTO:
+      type: string
+      enum:
+        - MINISERVER
+        - ROUTER
+        - ACCESS_POINT
+        - RASPBERRY_PI
+      description: Type of the device

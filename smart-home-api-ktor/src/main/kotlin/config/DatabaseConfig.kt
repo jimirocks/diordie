@@ -13,7 +13,7 @@ import rocks.jimi.diordie.models.Devices
 import rocks.jimi.diordie.models.Installations
 
 object DatabaseConfig {
-    
+
     fun init() {
         val config = HikariConfig().apply {
             driverClassName = "org.postgresql.Driver"
@@ -25,20 +25,16 @@ object DatabaseConfig {
             transactionIsolation = "TRANSACTION_REPEATABLE_READ"
             validate()
         }
-        
+
         val dataSource = HikariDataSource(config)
         Database.connect(dataSource)
-        
+
         // Create tables
         transaction {
             SchemaUtils.create(Customers, Installations, Devices)
         }
     }
-    
+
     suspend fun <T> dbQuery(block: suspend () -> T): T =
         newSuspendedTransaction(Dispatchers.IO) { block() }
-}
-
-fun Application.configureDatabases() {
-    DatabaseConfig.init()
 }
