@@ -1,7 +1,7 @@
 package rocks.jimi.diordie.service
 
-import com.smarthome.api.model.Device
-import com.smarthome.api.model.DeviceType
+import rocks.jimi.diordie.model.Device
+import rocks.jimi.diordie.model.DeviceType
 
 interface DeviceService {
     fun getAllDevices(): List<Device>

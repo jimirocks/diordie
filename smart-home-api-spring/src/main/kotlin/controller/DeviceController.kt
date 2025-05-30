@@ -1,8 +1,8 @@
 package rocks.jimi.diordie.controller
 
-import com.smarthome.api.model.Device
-import com.smarthome.api.model.DeviceType
-import com.smarthome.api.service.DeviceService
+import rocks.jimi.diordie.model.Device
+import rocks.jimi.diordie.model.DeviceType
+import rocks.jimi.diordie.service.DeviceService
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.responses.ApiResponse
 import io.swagger.v3.oas.annotations.tags.Tag

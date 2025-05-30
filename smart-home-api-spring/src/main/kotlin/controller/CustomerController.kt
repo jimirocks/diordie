@@ -1,7 +1,7 @@
 package rocks.jimi.diordie.controller
 
-import com.smarthome.api.model.Customer
-import com.smarthome.api.service.CustomerService
+import rocks.jimi.diordie.model.Customer
+import rocks.jimi.diordie.service.CustomerService
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.responses.ApiResponse
 import io.swagger.v3.oas.annotations.tags.Tag

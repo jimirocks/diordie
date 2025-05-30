@@ -1,9 +1,9 @@
 package rocks.jimi.diordie.service
 
-import com.smarthome.api.exception.ResourceNotFoundException
-import com.smarthome.api.model.Installation
-import com.smarthome.api.repository.CustomerRepository
-import com.smarthome.api.repository.InstallationRepository
+import rocks.jimi.diordie.exception.ResourceNotFoundException
+import rocks.jimi.diordie.model.Installation
+import rocks.jimi.diordie.repository.CustomerRepository
+import rocks.jimi.diordie.repository.InstallationRepository
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 import java.time.LocalDateTime

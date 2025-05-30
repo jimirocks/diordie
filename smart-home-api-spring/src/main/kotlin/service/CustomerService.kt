@@ -1,6 +1,6 @@
 package rocks.jimi.diordie.service
 
-import com.smarthome.api.model.Customer
+import rocks.jimi.diordie.model.Customer
 import java.util.Optional
 
 interface CustomerService {

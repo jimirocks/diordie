@@ -1,6 +1,6 @@
 package rocks.jimi.diordie.repository
 
-import com.smarthome.api.model.Customer
+import rocks.jimi.diordie.model.Customer
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
 import java.util.Optional

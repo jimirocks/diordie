@@ -1,11 +1,11 @@
 package rocks.jimi.diordie.service
 
-import com.smarthome.api.exception.ResourceAlreadyExistsException
-import com.smarthome.api.exception.ResourceNotFoundException
-import com.smarthome.api.model.Device
-import com.smarthome.api.model.DeviceType
-import com.smarthome.api.repository.DeviceRepository
-import com.smarthome.api.repository.InstallationRepository
+import rocks.jimi.diordie.exception.ResourceAlreadyExistsException
+import rocks.jimi.diordie.exception.ResourceNotFoundException
+import rocks.jimi.diordie.model.Device
+import rocks.jimi.diordie.model.DeviceType
+import rocks.jimi.diordie.repository.DeviceRepository
+import rocks.jimi.diordie.repository.InstallationRepository
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 import java.time.LocalDateTime

@@ -1,7 +1,7 @@
 package rocks.jimi.diordie.repository
 
-import com.smarthome.api.model.Device
-import com.smarthome.api.model.DeviceType
+import rocks.jimi.diordie.model.Device
+import rocks.jimi.diordie.model.DeviceType
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
 import java.util.Optional
