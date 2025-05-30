@@ -1,4 +1,4 @@
-package com.smarthome.api.repository
+package rocks.jimi.diordie.repository
 
 import com.smarthome.api.model.Device
 import com.smarthome.api.model.DeviceType

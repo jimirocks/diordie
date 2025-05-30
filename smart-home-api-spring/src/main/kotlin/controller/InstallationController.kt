@@ -1,4 +1,4 @@
-package com.smarthome.api.controller
+package rocks.jimi.diordie.controller
 
 import com.smarthome.api.model.Installation
 import com.smarthome.api.service.InstallationService

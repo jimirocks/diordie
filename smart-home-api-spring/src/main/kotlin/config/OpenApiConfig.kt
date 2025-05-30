@@ -1,4 +1,4 @@
-package com.smarthome.api.config
+package rocks.jimi.diordie.config
 
 import io.swagger.v3.oas.models.OpenAPI
 import io.swagger.v3.oas.models.info.Contact

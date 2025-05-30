@@ -1,4 +1,4 @@
-package com.smarthome.api
+package rocks.jimi.diordie
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication

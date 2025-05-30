@@ -1,4 +1,4 @@
-package com.smarthome.api.service
+package rocks.jimi.diordie.service
 
 import com.smarthome.api.model.Customer
 import java.util.Optional

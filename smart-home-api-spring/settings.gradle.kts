@@ -1,1 +1,1 @@
-rootProject.name = "smart-home-api"
+rootProject.name = "smart-home-api-spring"

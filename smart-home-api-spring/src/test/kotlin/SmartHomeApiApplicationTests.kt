@@ -1,4 +1,4 @@
-package com.smarthome.api
+package rocks.jimi.diordie
 
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest

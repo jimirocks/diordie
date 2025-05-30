@@ -1,4 +1,4 @@
-package com.smarthome.api.repository
+package rocks.jimi.diordie.repository
 
 import com.smarthome.api.model.Installation
 import org.springframework.data.jpa.repository.JpaRepository

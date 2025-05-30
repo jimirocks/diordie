@@ -1,4 +1,4 @@
-package com.smarthome.api.model
+package rocks.jimi.diordie.model
 
 enum class DeviceType {
     MINISERVER,
