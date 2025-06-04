@@ -1,8 +1,8 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "1.9.22"
-    kotlin("plugin.serialization") version "1.9.22"
+    kotlin("jvm") version "2.1.21"
+    kotlin("plugin.serialization") version "2.1.21"
     application
 }
 
@@ -17,7 +17,7 @@ repositories {
     mavenCentral()
 }
 
-val ktorVersion = "2.3.7"
+val ktorVersion = "3.1.3"
 val koinVersion = "3.5.0"
 val exposedVersion = "0.46.0"
 val logbackVersion = "1.4.14"

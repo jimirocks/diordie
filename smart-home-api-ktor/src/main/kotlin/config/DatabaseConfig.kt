@@ -19,7 +19,7 @@ object DatabaseConfig {
             driverClassName = "org.postgresql.Driver"
             jdbcUrl = System.getenv("DATABASE_URL") ?: "jdbc:postgresql://localhost:5432/smarthome"
             username = System.getenv("DATABASE_USER") ?: "postgres"
-            password = System.getenv("DATABASE_PASSWORD") ?: "postgres"
+            password = System.getenv("DATABASE_PASSWORD") ?: "mysecretpassword"
             maximumPoolSize = 10
             isAutoCommit = false
             transactionIsolation = "TRANSACTION_REPEATABLE_READ"

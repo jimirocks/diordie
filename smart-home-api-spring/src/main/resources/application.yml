@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/smarthome
+    url: jdbc:postgresql://localhost:5432/smarthome2
     username: postgres
-    password: postgres
+    password: mysecretpassword
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:

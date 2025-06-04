@@ -30,4 +30,8 @@ fun Application.module() {
 
     // Initialize database
     configureDatabases()
+
+    monitor.subscribe(ApplicationStarted) { application ->
+        log.info("Application XXX: ${application.environment.config.property("ktor.environment")}")
+    }
 }
