@@ -9,6 +9,7 @@ plugins {
 tasks.register("runRepeated") {
     description = "Runs the application repeatedly and appends output to a file"
     group = "application"
+    dependsOn("build")
 
     // Default values for the task properties
     val cycles = project.findProperty("cycles")?.toString()?.toInt() ?: 5
@@ -16,7 +17,7 @@ tasks.register("runRepeated") {
 
     doLast {
         // Get the application classpath and main class
-        val sourceSets = project.the<org.gradle.api.tasks.SourceSetContainer>()
+        val sourceSets = project.the<SourceSetContainer>()
         val appClasspath = sourceSets.getByName("main").runtimeClasspath
         val application = project.extensions.getByType(org.gradle.api.plugins.JavaApplication::class.java)
         val appMainClass = application.mainClass.get()
