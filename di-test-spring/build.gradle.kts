@@ -1,5 +1,6 @@
 plugins {
     kotlin("jvm") version "2.1.21"
+    id("rocks.jimi.diordie.application-convention")
     id("org.springframework.boot") version "3.2.2"
     kotlin("plugin.spring") version "2.1.21"
 }
@@ -25,3 +26,5 @@ tasks.test {
 kotlin {
     jvmToolchain(21)
 }
+
+application { mainClass.set("rocks.jimi.diordie.spring.SpringDiTestKt") }
